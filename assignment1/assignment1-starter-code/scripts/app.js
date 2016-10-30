@@ -16,7 +16,6 @@
             return;
           }
           var splitted=$scope.lunch.split(',');
-          console.log(splitted)
           if(splitted.length<=3){
               $scope.message="Enjoy!";
           }else{
