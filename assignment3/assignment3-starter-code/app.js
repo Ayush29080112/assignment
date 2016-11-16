@@ -14,10 +14,11 @@ function FoundItems(){
     templateUrl:"narrow.html",
     scope: {
       foundItem: '<',
-      onRemove: '&'
+      onRemove: '&',
+      errorMessage:'<'
     },
     // },
-    controller: ShoppingListDirectiveController,
+    controller: NarrowItDownController,
     controllerAs: 'list',
     bindToController: true
   }
@@ -29,17 +30,22 @@ function ShoppingListDirectiveController(){
 NarrowItDownController.$inject=['MenuSearchService']
   function NarrowItDownController(MenuSearchService){
     var narrow=this;
-
+  narrow.message=false;
+  narrow.searchItem="";
     narrow.onclick=function(searchItem){
-        narrow.found=[];
+      narrow.found=[];
+      narrow.message=false
       var promise=MenuSearchService.getMatchedMenuItems(narrow.searchItem);
-          promise.then(function(response){
-          var items=response.data;
 
+      promise.then(function(response){
+          var items=response.data;
             for(var i=0;i<items.menu_items.length;i++){
-                          if(items.menu_items[i].description.toLowerCase().indexOf(searchItem)!=-1){
+                          if(items.menu_items[i].description.toLowerCase().indexOf(searchItem)!=-1 & searchItem!=""){
                                narrow.found.push(items.menu_items[i])
                              }
+                         }
+                         if(narrow.found.length==0){
+                           narrow.message=true;
                          }
             }).catch(function(response){
             })
