@@ -1,0 +1,5 @@
+<ul>
+ <li ng-repeat="item in $ctrl.items">
+  <a ui-sref="subList({param1:item.short_name})"> {{item.id}} , {{ item.short_name }} , {{ item.name }}</a>
+</li>
+</ul>
