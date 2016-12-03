@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="text-center" ng-if='myInfo.user.firstName' >
+  First Name &nbsp;&nbsp;&nbsp;&nbsp;  :  {{myInfo.user.firstName}}<br/>
+  Last Name    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:  {{myInfo.user.lastName}}<br/>
+  Email Address&nbsp;:  {{myInfo.user.email}}<br/>
+  Phone Number : {{myInfo.user.phoneNumber}}<br/>
+  Menu Item &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{{myInfo.user.shortName}}
+  </div>
+  <div class="text-center" ng-if='!myInfo.user.firstName' >
+    Not Signed Up Yet.<a ui-sref="public.SignUp"> Sign up Now!</a>
+  </div>
+</div>

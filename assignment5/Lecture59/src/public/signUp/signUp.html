@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="text-center">
+    <form name="SignupForm" novalidate>
+      First Name    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type='text' style="color:black;"name="firstName" placeholder="First Name"ng-model="signUp.user.firstName" style="color:black;"  required></input><br/>
+      <span ng-if="SignupForm.firstName.$error.required && SignupForm.firstName.$touched">
+        First Name is Required
+      </span><br/><br/>
+      Last  Name     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' placeholder="Last Name"style="color:black;" name="lastName" ng-model="signUp.user.lastName" required></input><br/>
+      <span ng-if="SignupForm.lastName.$error.required && SignupForm.lastName.$touched">
+        Last Name is Required
+      </span><br/><br/>
+      Email Address   <input type='email' style="color:black;" name="email" ng-model="signUp.user.email"required placeholder="abc@xyz"></input><br/>
+      <span ng-if="SignupForm.email.$error.required && SignupForm.email.$touched">
+        Email Address is Required
+      </span><br/>
+      <span ng-if="SignupForm.email.$invalid && SignupForm.email.$touched">
+        Email Address is Invalid. Must be of type abc@xyz
+      </span><br/>
+      Phone Number     <input type='text' style="color:black;" pattern="(\d{3})-(\d{3})-(\d{4})"name="phoneNumber" ng-model="signUp.user.phoneNumber"required placeholder="###-###-####"></input><br/>
+      <span ng-if="SignupForm.phoneNumber.$error.required && SignupForm.phoneNumber.$touched">
+        Phone Number is Required
+      </span><br/>
+      <span ng-if="SignupForm.phoneNumber.$invalid && SignupForm.phoneNumber.$touched">
+        Phone Number must be of type ###-###-####
+      </span><br/>
+
+      Menu Number     <input type='text' style="color:black;" placeholder="Menu Item"name="shortName" ng-model="signUp.user.shortName"required></input><br/>
+      <span ng-if="SignupForm.shortName.$error.required && SignupForm.shortName.$touched">
+        Menu Number is Required
+      </span><br/><br/>
+      <button style="background-color:grey; color:black;" ng-disabled=SignupForm.$invalid ng-click="signUp.addUser()"> Submit</button>
+    </form>
+  <span ng-bind="signUp.message"></span>
+  </div>
+
+</div>
